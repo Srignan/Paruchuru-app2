@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="mainPane" dividerPositions="0.3547557840616967" orientation="VERTICAL" prefHeight="550.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.Inventory_GUI_Controller">
+    <items>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="815.0">
+            <children>
+                <TextField fx:id="nameText" focusTraversable="false" layoutX="106.0" layoutY="36.0" prefHeight="25.0" prefWidth="260.0" promptText="Write the name of your inventory item here ..." />
+                <Button id="addTaskButton" fx:id="addItemButton" focusTraversable="false" layoutX="447.0" layoutY="36.0" mnemonicParsing="false" onAction="#addNewItem" prefHeight="25.0" prefWidth="138.0" text="Add Inventory Item" />
+                <Label fx:id="errorLabel" layoutX="106.0" layoutY="134.0" prefHeight="17.0" prefWidth="336.0" />
+                <Button fx:id="deleteButton" focusTraversable="false" layoutX="640.0" layoutY="84.0" mnemonicParsing="false" onAction="#deleteItem" prefHeight="25.0" prefWidth="138.0" text="Delete" />
+                <Button fx:id="updateButton" layoutX="640.0" layoutY="36.0" mnemonicParsing="false" onAction="#updateItemClicked" prefHeight="25.0" prefWidth="138.0" text="Update Item" />
+            <MenuButton fx:id="sortButton" layoutX="698.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Sort">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#sortSerialNumber" text="By Serial Number" />
+                <MenuItem mnemonicParsing="false" onAction="#sortName" text="By Name" />
+                  <MenuItem mnemonicParsing="false" onAction="#sortValue" text="By Value" />
+              </items>
+            </MenuButton>
+            <TextField fx:id="moneyText" layoutX="106.0" layoutY="65.0" prefHeight="25.0" prefWidth="197.0" promptText="00.00" />
+            <TextField fx:id="serialText" layoutX="106.0" layoutY="98.0" prefHeight="25.0" prefWidth="197.0" promptText="XXXXXXXXXX" />
+            <Label layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="90.0" text="Search Box" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchField" layoutX="126.0" layoutY="166.0" onKeyReleased="#search" prefHeight="25.0" prefWidth="517.0" />
+            <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="25.0" prefWidth="816.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="openItem" mnemonicParsing="false" onAction="#openClicked" text="Open" />
+                        <Menu mnemonicParsing="false" text="Save As">
+                           <items>
+                              <MenuItem fx:id="TSVItem" mnemonicParsing="false" onAction="#saveClicked" text="TSV" />
+                              <MenuItem fx:id="HTMLItem" mnemonicParsing="false" onAction="#saveClicked" text="HTML" />
+                              <MenuItem fx:id="JSONItem" mnemonicParsing="false" onAction="#saveClicked" text="JSON" />
+                           </items>
+                        </Menu>
+                        <MenuItem fx:id="SaveOpenedItem" mnemonicParsing="false" onAction="#saveOpenedClicked" text="Save" />
+                        <MenuItem fx:id="closeItem" mnemonicParsing="false" onAction="#closeItemClicked" text="Close File" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Label layoutX="22.0" layoutY="35.0" text="Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="64.0" text="Value">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="96.0" text="Serial No">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="23.55548095703125" endY="75.77777099609375" layoutX="592.0" layoutY="78.0" startX="23.5555419921875" startY="-51.66666793823242" />
+            <Button fx:id="cancelButton" layoutX="449.0" layoutY="84.0" mnemonicParsing="false" onAction="#cancelClicked" prefHeight="25.0" prefWidth="131.0" text="Cancel" />
+            <Line endX="267.11114501953125" layoutX="548.0" layoutY="154.0" startX="-548.0" />
+            </children>
+        </AnchorPane>
+      <TableView fx:id="tableview" prefHeight="400.0" prefWidth="832.0">
+        <columns>
+          <TableColumn fx:id="item_value" prefWidth="185.7777777844003" text="Value" />
+          <TableColumn fx:id="item_serial" prefWidth="302.22216796875" text="Serial Number" />
+            <TableColumn fx:id="item_name" prefWidth="327.99993896484375" text="Name" />
+        </columns>
+      </TableView>
+    </items>
+</SplitPane>
